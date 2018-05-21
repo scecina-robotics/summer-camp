@@ -11,6 +11,7 @@
  */
 
 #include "main.h"
+#include "base.h"
 
 /*
  * Runs the user operator control code. This function will be started in its own task with the
@@ -29,8 +30,36 @@
  *
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
+
+bool ForwardButton;
+bool ReverseButton;
+bool RightButton;
+bool LeftButton;
+int Distance;
+int MaxSpeed;
+int StopDistance;
+
 void operatorControl() {
 	while (1) {
-		delay(20);
+		ForwardButton=joystickGetDigital(1,7,JOY_UP);
+		ReverseButton=joystickGetDigital(1,7,JOY_DOWN);
+		RightButton=joystickGetDigital(1,7,JOY_RIGHT);
+		LeftButton=joystickGetDigital(1,7,JOY_LEFT);
+		Distance = ultrasonicGet(sonar);
+		MaxSpeed = 100;
+		StopDistance = 20;
+
+		// Forward
+		if(ForwardButton!=0 && Distance > StopDistance){
+			BaseForward(MaxSpeed);
+		}else if(ReverseButton!=0 ){
+			BaseReverse(MaxSpeed);
+		}else if(RightButton!=0){
+			BaseTurnRight(MaxSpeed/2);
+		}else if(LeftButton!=0){
+			BaseTurnLeft(MaxSpeed/2);
+		}else{
+			BaseStop();
+		}
 	}
 }

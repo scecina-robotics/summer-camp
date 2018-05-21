@@ -37,4 +37,7 @@ void initializeIO() {
  * can be implemented in this task if desired.
  */
 void initialize() {
+
+sonar = ultrasonicInit(2, 1);
+
 }
