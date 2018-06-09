@@ -117,6 +117,7 @@ void operatorControl() { // Main function for controlling robot
 		 *		joystickGetAnalog({joystick #}, {joystick control #})
 		 * 4. Code joysticks.
 		 *		New functions: BaseJoyLeft, BaseJoyRight
+		 *    speed will be a dependant on max value and joystick value
 		 * 5. Each team member must navigate the Labyrinth
 		 *    (there is a twist though)
 		 */
