@@ -31,6 +31,11 @@
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
 
+/*
+ * First:
+ * Declare all variables that you will be using
+ */
+
 bool ForwardButton;
 bool ReverseButton;
 bool RightButton;
@@ -39,8 +44,23 @@ int Distance;
 int MaxSpeed;
 int StopDistance;
 
-void operatorControl() {
+void operatorControl() { // Main function for controlling robot
 	while (1) {
+
+		/* Since while loop is set to true
+		 * it will never never end.
+		 * This is called an infinite loop.
+		 * Usually a bad thing, but in this case
+		 * allows program to remain running while
+		 * robot is on.
+		 */
+
+		/*
+		 * Second:
+		 * Assign values or controller objects
+		 * to variables declared above.
+		 */
+
 		ForwardButton=joystickGetDigital(1,7,JOY_UP);
 		ReverseButton=joystickGetDigital(1,7,JOY_DOWN);
 		RightButton=joystickGetDigital(1,7,JOY_RIGHT);
@@ -49,7 +69,12 @@ void operatorControl() {
 		MaxSpeed = 100;
 		StopDistance = 20;
 
-		// Forward
+		/*
+		 * Third:
+		 * Code robot operations
+		 */
+
+		// Contol robot with digital buttons
 		if(ForwardButton!=0 && Distance > StopDistance){
 			BaseForward(MaxSpeed);
 		}else if(ReverseButton!=0 ){
@@ -61,5 +86,6 @@ void operatorControl() {
 		}else{
 			BaseStop();
 		}
-	}
-}
+
+	}// end of while loop
+} // end of operatorControl function
