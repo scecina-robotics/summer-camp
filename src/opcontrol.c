@@ -17,10 +17,13 @@
  * can be used in the program.
  *
  * main.h = default robot and controller functions (required)
+ * <math.h> = math functions such as round()
  * base.h = functions prewritten for summer camp base unit.
+ *          needed for challange #2
  */
 
 #include "main.h"
+#include <math.h>
 //#include "base.h"
 
 /*
@@ -79,14 +82,44 @@ void operatorControl() { // Main function for controlling robot
 		 * Code robot operations
 		 */
 
-		// Contol robot with digital buttons
+		// Challenge #1 - Driving Straight
+
 		/*
 		if(ForwardButton != 0){
-			BaseForward(MaxSpeed,LeftAdjust,RightAdjust);
+			motorSet(10,round(MaxSpeed * RightAdjust));
+			motorSet(1, round(MaxSpeed * LeftAdjust * -1));
+			// -1 since motors turn in opposite directions
 		}else{
-			BaseStop();
+			motorSet(1,0);
+		  motorSet(10,0);
 		}
 		*/
+
+		// Challenge #2 - Labyrinth
+
+		/*
+		 * 1. Remove Challenge #1 code above
+		 * 2. Uncomment base.h
+		 *    New Functions: BaseForward, BaseReverse, BaseLeft, BaseRight, BaseStop
+		 * 3. Uncomment Challenge #2 variables.
+		 * 4. Assign values to variables.
+		 * 3. Code buttons and new functions to control robot.
+		 * 4. Each team member must navigate the Labyrinth with buttons.
+		 */
+
+		// Challenge #3 - Labyrinth II
+
+		/*
+		 * 1. Include base_joy.h
+		 * 2. Declare additional variables:
+		 *    LeftStickUpDown, RightStickUpDown
+		 * 3. Assign variables to new joystick funtions
+		 *		joystickGetAnalog({joystick #}, {joystick control #})
+		 * 4. Code joysticks.
+		 *		New functions: BaseJoyLeft, BaseJoyRight
+		 * 5. Each team member must navigate the Labyrinth
+		 *    (there is a twist though)
+		 */
 
 	}// end of while loop
 } // end of operatorControl function
