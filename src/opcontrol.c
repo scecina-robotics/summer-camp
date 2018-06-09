@@ -10,8 +10,18 @@
  * obtained from http://sourceforge.net/projects/freertos/files/ or on request.
  */
 
+/*
+ * First:
+ * Add any needed header files.
+ * Header files add functions that
+ * can be used in the program.
+ *
+ * main.h = default robot and controller functions (required)
+ * base.h = functions prewritten for summer camp base unit.
+ */
+
 #include "main.h"
-#include "base.h"
+//#include "base.h"
 
 /*
  * Runs the user operator control code. This function will be started in its own task with the
@@ -32,17 +42,15 @@
  */
 
 /*
- * First:
+ * Second:
  * Declare all variables that you will be using
  */
 
-bool ForwardButton;
-bool ReverseButton;
-bool RightButton;
-bool LeftButton;
-int Distance;
-int MaxSpeed;
-int StopDistance;
+//bool ForwardButton;
+//int MaxSpeed;
+//float LeftAdjust;
+//float RightAdjust;
+
 
 void operatorControl() { // Main function for controlling robot
 	while (1) {
@@ -56,36 +64,29 @@ void operatorControl() { // Main function for controlling robot
 		 */
 
 		/*
-		 * Second:
+		 * Third:
 		 * Assign values or controller objects
 		 * to variables declared above.
 		 */
 
-		ForwardButton=joystickGetDigital(1,7,JOY_UP);
-		ReverseButton=joystickGetDigital(1,7,JOY_DOWN);
-		RightButton=joystickGetDigital(1,7,JOY_RIGHT);
-		LeftButton=joystickGetDigital(1,7,JOY_LEFT);
-		Distance = ultrasonicGet(sonar);
-		MaxSpeed = 100;
-		StopDistance = 20;
+		//ForwardButton = joystickGetDigital(1,7,JOY_UP);
+		//MaxSpeed = 100; // Allowed values: -127 to 127
+		//LeftAdjust = 1; // Allowed values 0 to 1
+		//RightAdjust = 1; //Allowed valuers 0 to 1
 
 		/*
-		 * Third:
+		 * Fourth:
 		 * Code robot operations
 		 */
 
 		// Contol robot with digital buttons
-		if(ForwardButton!=0 && Distance > StopDistance){
-			BaseForward(MaxSpeed);
-		}else if(ReverseButton!=0 ){
-			BaseReverse(MaxSpeed);
-		}else if(RightButton!=0){
-			BaseTurnRight(MaxSpeed/2);
-		}else if(LeftButton!=0){
-			BaseTurnLeft(MaxSpeed/2);
+		/*
+		if(ForwardButton != 0){
+			BaseForward(MaxSpeed,LeftAdjust,RightAdjust);
 		}else{
 			BaseStop();
 		}
+		*/
 
 	}// end of while loop
 } // end of operatorControl function
