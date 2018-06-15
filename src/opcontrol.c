@@ -115,7 +115,7 @@ void operatorControl() { // Main function for controlling robot
 		/*
 		 * 1. Comment out Challenge #1 code above
 		 * 2. Uncomment base.h inlcude
-		 *    New Functions: BaseForward, BaseReverse, BaseLeft, BaseRight, BaseStop
+		 *    New Functions: BaseForward, BaseReverse, BaseTurnLeft, BaseTurnRight, BaseStop
 		 * 3. Uncomment Challenge #2 variables.
 		 * 4. Assign values to variables.
 		 * 3. Code buttons and new functions to control robot.
