@@ -131,9 +131,10 @@ void operatorControl() { // Main function for controlling robot
 		 *    LeftStickUpDown, RightStickUpDown
 		 * 3. Assign variables to new joystick funtions
 		 *		joystickGetAnalog({joystick #}, {joystick control #})
-		 * 4. Extend code to inlcude joysticks.
+		 * 4. Extend code to inlcude analog joysticks.
 		 *		New functions: BaseJoyLeft, BaseJoyRight
 		 *    speed will be a dependant on max value and joystick value
+		 *		Hint: Only check for analog sticks if no button is pushed.
 		 * 5. Each team member must navigate the Labyrinth
 		 *    (there is a twist though)
 		 */
