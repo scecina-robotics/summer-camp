@@ -22,11 +22,11 @@ void BaseTurnLeft(int speed){
 }
 
 void BaseForwardAdjust(int left_speed, int right_speed){
-  BaseMotorset(left_speed, -right_speed);
+  BaseMotorSet(left_speed, -right_speed);
 }
 
 void BaseReverseAdjust(int left_speed, int right_speed){
-  BaseMotorset(-left_speed, right_speed);
+  BaseMotorSet(-left_speed, right_speed);
 }
 
 void BaseStop(){
