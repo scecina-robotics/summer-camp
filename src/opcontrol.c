@@ -127,6 +127,7 @@ void operatorControl() { // Main function for controlling robot
 
 		/*
 		 * 1. Include base_joy.h
+		 *    New Functions: LeftWheels, RightWheels
 		 * 2. Declare additional variables:
 		 *    LeftStickUpDown, RightStickUpDown
 		 * 3. Assign variables to new joystick funtions
