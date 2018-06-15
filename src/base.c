@@ -21,6 +21,14 @@ void BaseTurnLeft(int speed){
   BaseMotorSet(-speed,-speed);
 }
 
+void BaseForwardAdjust(int left_speed, int right_speed){
+  BaseMotorset(left_speed, -right_speed);
+}
+
+void BaseReverseAdjust(int left_speed, int right_speed){
+  BaseMotorset(-left_speed, right_speed);
+}
+
 void BaseStop(){
   BaseMotorSet(0,0);
 }
