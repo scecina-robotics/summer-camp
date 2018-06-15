@@ -33,6 +33,7 @@
 #include "main.h"
 #include <math.h>
 #include "base.h"
+#include "base_joy.h"
 
 
 /*
@@ -52,6 +53,10 @@ float RightAdjust;
 bool ReverseButton;
 bool LeftButton;
 bool RightButton;
+
+// Analog joystick
+int LeftStickUpDown;
+int RightStickUpDown;
 
 
 void operatorControl() { // Main function for controlling robot
@@ -76,6 +81,9 @@ void operatorControl() { // Main function for controlling robot
 		ReverseButton = joystickGetDigital(1,7,JOY_DOWN);
 		LeftButton = joystickGetDigital(1, 7, JOY_LEFT);
 		RightButton = joystickGetDigital(1, 7, JOY_RIGHT);
+
+		LeftStickUpDown = joystickGetAnalog(1, 3);
+		RightStickUpDown = joystickGetAnalog(1, 2);
 
 
 		MaxSpeed = 100; // Allowed values: -127 to 127
@@ -137,7 +145,8 @@ void operatorControl() { // Main function for controlling robot
 		 }else if(RightButton != 0){
 			 BaseTurnRight(MaxSpeed);
 		 }else{
-			 BaseStop();
+			 LeftWheels(LeftStickUpDown);
+			 RightWheels(RightStickUpDown);
 		 }
 
 		// Challenge #3 - Labyrinth II
