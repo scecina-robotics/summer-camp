@@ -96,74 +96,32 @@ void operatorControl() { // Main function for controlling robot
 		 * Code robot operations
 		 */
 
-		// Challenge #1 - Driving Straight
-
-		// Basic Method
-    /*
+		// Base Drive Code
 		if(ForwardButton != 0){
-			motorSet(10,100); // adjust second nunmber as needed for right wheels
-			motorSet(1, -100); // adjust second number as needed for left wheels
-			// -1 since motors turn in opposite directions
+		 BaseForward(MaxSpeed);
+		}else if(ReverseButton != 0){
+		 BaseReverse(MaxSpeed);
+		}else if(LeftButton != 0){
+		 BaseTurnLeft(MaxSpeed);
+		}else if(RightButton != 0){
+		 BaseTurnRight(MaxSpeed);
 		}else{
-			motorSet(1,0);
-		  motorSet(10,0);
+		 LeftWheels(LeftStickUpDown);
+		 RightWheels(RightStickUpDown);
 		}
-		*/
 
 
-		// More Advanced method
-		/*
-		if(ForwardButton != 0){
-			motorSet(10,round(MaxSpeed * RightAdjust));
-			motorSet(1, round(MaxSpeed * LeftAdjust * -1));
-			// -1 since motors turn in opposite directions
-		}else{
-			motorSet(1,0);
-		  motorSet(10,0);
-		}
-		*/
-
-		// Challenge #2 - Labyrinth
+		// Challenge #1 - Button Stop/Start
 
 		/*
-		 * 1. Comment out Challenge #1 code above
-		 * 2. Uncomment base.h inlcude
-		 *    New Functions: BaseForward, BaseReverse, BaseLeft, BaseRight, BaseStop
-		 * 3. Uncomment Challenge #2 variables.
-		 * 4. Assign values to variables.
-		 * 3. Code buttons and new functions to control robot.
-		 * 		Hint: if(some_button){move_someway}else if(other_button){move_otherway}...}else{dont_move}
-		 * 4. Each team member must navigate the Labyrinth with buttons.
-		 */
-
-		 if(ForwardButton != 0){
-			 BaseForward(MaxSpeed);
-		 }else if(ReverseButton != 0){
-			 BaseReverse(MaxSpeed);
-		 }else if(LeftButton != 0){
-			 BaseTurnLeft(MaxSpeed);
-		 }else if(RightButton != 0){
-			 BaseTurnRight(MaxSpeed);
-		 }else{
-			 LeftWheels(LeftStickUpDown);
-			 RightWheels(RightStickUpDown);
-		 }
-
-		// Challenge #3 - Labyrinth II
-
-		/*
-		 * 1. Include base_joy.h
-		 *    New Functions: LeftWheels, RightWheels
-		 * 2. Declare additional variables:
-		 *    LeftStickUpDown, RightStickUpDown
-		 * 3. Assign variables to new joystick funtions
-		 *		joystickGetAnalog({joystick #}, {joystick control #})
-		 * 4. Extend code to inlcude analog joysticks.
-		 *		New functions: BaseJoyLeft, BaseJoyRight
-		 *    speed will be a dependant on max value and joystick value
-		 *		Hint: Only check for analog sticks if no button is pushed.
-		 * 5. Each team member must navigate the Labyrinth
-		 *    (there is a twist though)
+		 * 1. Include button.h
+		 * 2. Add two button variables
+		 * 3. Add a on/off toggle
+		 * 4. Code one button to stop robot control
+		 *		and one button to start robot control
+		 *		Hint: Nested if statement.
+		 * 6. Include print statements to view button status on computer.
+		 * 7. Play Tag.
 		 */
 
 	}// end of while loop
