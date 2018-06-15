@@ -32,7 +32,7 @@
 
 #include "main.h"
 #include <math.h>
-//#include "base.h"
+#include "base.h"
 
 
 /*
@@ -42,10 +42,14 @@
  */
 
 // First Challenge variable
-//bool ForwardButton;
-//int MaxSpeed;
-//float LeftAdjust;
-//float RightAdjust;
+bool ForwardButton;
+bool ReverseButton;
+bool LeftButton;
+bool RightButton;
+
+int MaxSpeed;
+float LeftAdjust;
+float RightAdjust;
 
 // Additional Second Challange variables
 //bool ReverseButton
@@ -71,11 +75,15 @@ void operatorControl() { // Main function for controlling robot
 		 * to variables declared above.
 		 */
 
-		//ForwardButton = joystickGetDigital(1,7,JOY_UP);
+		ForwardButton = joystickGetDigital(1,7,JOY_UP);
+		ReverseButton = joystickGetDigital(1,7,JOY_DOWN);
+		LeftButton = joystickGetDigital(1, 7, JOY_LEFT);
+		RightButton = joystickGetDigital(1, 7, JOY_RIGHT);
 
-		//MaxSpeed = 100; // Allowed values: -127 to 127
-		//LeftAdjust = 1; // Allowed values 0 to 1
-		//RightAdjust = 1; //Allowed valuers 0 to 1
+
+		MaxSpeed = 100; // Allowed values: -127 to 127
+		LeftAdjust = 1; // Allowed values 0 to 1
+		RightAdjust = 1; //Allowed valuers 0 to 1
 
 		/*
 		 * Fourth:
@@ -86,7 +94,7 @@ void operatorControl() { // Main function for controlling robot
 		// Challenge #1 - Driving Straight
 
 		// Basic Method
-		/*
+    /*
 		if(ForwardButton != 0){
 			motorSet(10,100); // adjust second nunmber as needed for right wheels
 			motorSet(1, -100); // adjust second number as needed for left wheels
@@ -122,6 +130,18 @@ void operatorControl() { // Main function for controlling robot
 		 * 		Hint: if(some_button){move_someway}else if(other_button){move_otherway}...}else{dont_move}
 		 * 4. Each team member must navigate the Labyrinth with buttons.
 		 */
+
+		 if(ForwardButton != 0){
+			 BaseForward(MaxSpeed);
+		 }else if(ReverseButton != 0){
+			 BaseReverse(MaxSpeed);
+		 }else if(LeftButton != 0){
+			 BaseTurnLeft(MaxSpeed);
+		 }else if(RightButton != 0){
+			 BaseTurnRight(MaxSpeed);
+		 }else{
+			 BaseStop();
+		 }
 
 		// Challenge #3 - Labyrinth II
 
