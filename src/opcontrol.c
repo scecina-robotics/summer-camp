@@ -48,9 +48,9 @@
 //float RightAdjust;
 
 // Additional Second Challange variables
-//bool ReverseButton
-//bool LeftButton
-//bool RightButton
+//bool ReverseButton;
+//bool LeftButton;
+//bool RightButton;
 
 
 void operatorControl() { // Main function for controlling robot
