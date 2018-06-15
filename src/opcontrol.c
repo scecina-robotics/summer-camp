@@ -43,18 +43,15 @@
 
 // First Challenge variable
 bool ForwardButton;
-bool ReverseButton;
-bool LeftButton;
-bool RightButton;
 
 int MaxSpeed;
 float LeftAdjust;
 float RightAdjust;
 
 // Additional Second Challange variables
-//bool ReverseButton
-//bool LeftButton
-//bool RightButton
+bool ReverseButton;
+bool LeftButton;
+bool RightButton;
 
 
 void operatorControl() { // Main function for controlling robot
