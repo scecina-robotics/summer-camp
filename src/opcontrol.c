@@ -115,7 +115,9 @@ void operatorControl() { // Main function for controlling robot
 			 LeftWheels(LeftStickUpDown);
 			 RightWheels(RightStickUpDown);
 			}
-	  }
+	        }else{
+			BaseStop();
+		}
 
 
 		// Challenge #1 - Button Stop/Start
