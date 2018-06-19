@@ -29,6 +29,10 @@
 
 Ultrasonic sonar;
 
+//Button Switches
+#define BUTTON_SWITCH_1 1
+#define BUTTON_SWITCH_2 2
+
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus
 extern "C" {

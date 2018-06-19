@@ -1,6 +1,8 @@
 #ifndef _BASE_H_
 #define _BASE_H_
 
+void BaseMotorSet(int left_speed, int right_speed);
+
 void BaseForward(int speed);
 void BaseReverse(int speed);
 void BaseTurnRight(int speed);

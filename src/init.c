@@ -21,6 +21,11 @@
  * configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
  */
 void initializeIO() {
+
+  // configure the pin that the limit switch is plugged into as an input
+  pinMode(BUTTON_SWITCH_1, INPUT);
+  pinMode(BUTTON_SWITCH_2, INPUT);
+
 }
 
 /*
@@ -38,6 +43,6 @@ void initializeIO() {
  */
 void initialize() {
 
-sonar = ultrasonicInit(2, 1);
+sonar = ultrasonicInit(3, 4);
 
 }
