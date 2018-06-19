@@ -114,15 +114,27 @@ void operatorControl() { // Main function for controlling robot
 		// Challenge #1 - Button Stop/Start
 
 		/*
-		 * 1. Include button.h
-		 * 2. Add two button variables
-		 * 3. Add a on/off toggle
-		 * 4. Code one button to stop robot control
+		 * 1. Add a button toggle variable (bool)
+		 * 2. Code if statements for BUTTON_SWITCH_!, BUTTON_SWITCH_2
+		 * 	  condition = digitalRead(BUTTON_SWITCH_1) == LOW
+		 *    use digitla ports 1 and 2
+		 * 3. Code one button to stop robot control
 		 *		and one button to start robot control
 		 *		Hint: Nested if statement.
-		 * 6. Include print statements to view button status on computer.
-		 * 7. Play Tag.
+		 * 4. Include print statements to view button status on computer.
+		 * 5. Play Tag.
 		 */
+
+
+
+		 // Challange #2 - Sonic Ranger
+
+		 /*
+		  * 1. Code the sonic ranger to stop forward progress
+			*    if bot if something is within 10cm of an object
+			* 2. Measuring Distance with sonic ranger
+			*    int distance = ultrasonicGet(sonar);
+			*/
 
 	}// end of while loop
 } // end of operatorControl function
