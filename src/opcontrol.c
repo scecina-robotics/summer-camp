@@ -46,8 +46,6 @@
 bool ForwardButton;
 
 int MaxSpeed;
-float LeftAdjust;
-float RightAdjust;
 
 // Additional Second Challange variables
 bool ReverseButton;
@@ -61,6 +59,19 @@ int RightStickUpDown;
 // Button Switch Toggle
 bool ButtonSwitch;
 
+// Sonic Ranger
+int Distance;
+int AutoDistance;
+int StopDistance;
+
+// Automation
+bool AutoOn;
+
+
+// Turning Times
+int Time90;
+int TimeReverse;
+int TimePause;
 
 void operatorControl() { // Main function for controlling robot
 	// We need to preset the ButtonSwitch before starting loop
@@ -86,14 +97,22 @@ void operatorControl() { // Main function for controlling robot
 		ReverseButton = joystickGetDigital(1,7,JOY_DOWN);
 		LeftButton = joystickGetDigital(1, 7, JOY_LEFT);
 		RightButton = joystickGetDigital(1, 7, JOY_RIGHT);
-
 		LeftStickUpDown = joystickGetAnalog(1, 3);
 		RightStickUpDown = joystickGetAnalog(1, 2);
 
 
-		MaxSpeed = 100; // Allowed values: -127 to 127
-		LeftAdjust = 1; // Allowed values 0 to 1
-		RightAdjust = 1; //Allowed valuers 0 to 1
+		MaxSpeed = 125; // Allowed values: -127 to 127
+
+		Distance = ultrasonicGet(sonar);
+		StopDistance = 10;
+
+		// Automation Switch
+		AutoOn = joystickGetDigital(1,6,JOY_UP);
+
+		// Times
+		Time90 = 2000;
+		TimeReverse = 1000;
+		TimePause = 1000;
 
 		/*
 		 * Fourth:
@@ -101,36 +120,69 @@ void operatorControl() { // Main function for controlling robot
 		 * Code robot operations
 		 */
 
-		if(ButtonSwitch){
-			// Base Drive Code
-			if(ForwardButton != 0){
-			 BaseForward(MaxSpeed);
+		// Challenge #4 - Automation Challenge
+
+		/* Take data for power vs. ft/s graph.
+		 * Take data for time vs. angle at power = 50.
+		 * Assign values to S-[1-4] and T-[1-3]
+		 * to complete maze.
+		 */
+
+
+  if(ButtonSwitch){
+      //if(ForwardButton != 0 && Distance > StopDistance){
+			if(ForwardButton != 0){	//Disable Sonic Ranger
+				BaseForward(MaxSpeed);
 			}else if(ReverseButton != 0){
 			 BaseReverse(MaxSpeed);
 			}else if(LeftButton != 0){
 			 BaseTurnLeft(MaxSpeed);
 			}else if(RightButton != 0){
 			 BaseTurnRight(MaxSpeed);
+		  }else if(AutoOn != 0){
+			  //DAY 4: Automation Challenge
+				// S-1
+				BaseStop();
+				BaseForward(100); // Power (0-127)
+		 		delay(1000); // Time (mS)
+				// T-1
+				BaseStop();
+				delay(TimePause);
+				BaseTurnLeft(50);
+				delay(1000); // Time (ms)
+				// S-2
+				BaseStop();
+				delay(TimePause);
+				BaseForward(100); //Power (0-127)
+		 		delay(1000); // Time (mS)
+				// T-2
+				BaseStop();
+				delay(TimePause);
+				BaseTurnRight(50);
+				delay(1000); // Time (ms)
+				// S-3
+				BaseStop();
+				delay(TimePause);
+				BaseForward(100); //Power (0-127)
+		 		delay(1000); // Time (mS)
+				// T-3
+				BaseStop();
+				delay(TimePause);
+				BaseTurnRight(50);
+				delay(1000); // Time (ms)
+				// S-4
+				BaseStop();
+				delay(TimePause);
+				BaseForward(100); //Power (0-127)
+		 		delay(1000); // Time (mS)
 			}else{
 			 LeftWheels(LeftStickUpDown);
 			 RightWheels(RightStickUpDown);
 			}
-	  }
+	  }else{
+			BaseStop();
+		}
 
-
-		// Challenge #1 - Button Stop/Start
-
-		/*
-		 * 1. Add a button toggle variable (bool)
-		 * 2. Code if statements for BUTTON_SWITCH_!, BUTTON_SWITCH_2
-		 * 	  condition = digitalRead(BUTTON_SWITCH_1) == LOW
-		 *    use digitla ports 1 and 2
-		 * 3. Code one button to stop robot control
-		 *		and one button to start robot control
-		 *		Hint: Nested if statement.
-		 * 4. Include print statements to view button status on computer.
-		 * 5. Play Tag.
-		 */
 
 		 if (digitalRead(BUTTON_SWITCH_1) == LOW ){
 			 ButtonSwitch = false;
@@ -142,14 +194,7 @@ void operatorControl() { // Main function for controlling robot
 			 print("Button 2 Pushed");
 		 }
 
-		 // Challange #2 - Sonic Ranger
 
-		 /*
-		  * 1. Code the sonic ranger to stop forward progress
-			*    if bot if something is within 10cm of an object
-			* 2. Measuring Distance with sonic ranger
-			*    int distance = ultrasonicGet(sonar);
-			*/
 
 
 	}// end of while loop
