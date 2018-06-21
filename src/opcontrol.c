@@ -107,7 +107,8 @@ void operatorControl() { // Main function for controlling robot
 		StopDistance = 10;
 
 		// Automation Switch
-		AutoOn = joystickGetDigital(1,6,JOY_UP);
+		// AutoOn = joystickGetDigital(1,6,JOY_UP);
+		AutoOn = 0;
 
 		// Times
 		Time90 = 2000;
